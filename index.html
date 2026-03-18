@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajivex Mobile Shop — Karur's Premium Mobile Store</title>
+<meta name="description" content="Ajivex Mobile Shop Karur — Best prices on mobiles, accessories, electronics. Surprise delivery within 20KM. iPhone, Samsung, Vivo & more. Call +91 98765 43210">
+<meta name="keywords" content="mobile shop karur, best mobile karur, samsung karur, iphone karur, mobile accessories karur, ajivex mobile">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Ajivex Mobile Shop — Karur">
+<meta property="og:description" content="Premium mobiles at best prices. Surprise delivery within 20KM of Karur.">
+<meta property="og:type" content="website">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#D4AF37">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Ajivex Mobile Shop",
+  "description": "Premium mobile shop in Karur offering mobiles, accessories, electronics with surprise delivery within 20KM",
+  "address": { "@type": "PostalAddress", "addressLocality": "Karur", "addressRegion": "Tamil Nadu", "postalCode": "639001", "addressCountry": "IN" },
+  "telephone": "+919876543210",
+  "openingHours": "Mo-Sa 09:00-21:00",
+  "priceRange": "₹₹"
+}
+</script>
+</head>
+<body>
+
+<!-- ════════════════ NAVBAR ════════════════ -->
+<nav class="navbar">
+  <div class="nav-logo" onclick="navigate('home')">
+    <div class="nav-logo-icon">A</div>
+    <div class="nav-logo-text">Ajivex Mobile<span>Karur, Tamil Nadu</span></div>
+  </div>
+  <div class="nav-location" onclick="detectLocation()">
+    <i class="fas fa-map-marker-alt"></i>
+    <span class="nav-location-text" id="nav-loc">Karur, TN</span>
+    <i class="fas fa-chevron-down" style="font-size:0.6rem;color:var(--gray)"></i>
+  </div>
+  <div class="nav-search">
+    <input type="text" placeholder="Search mobiles, brands, accessories..." id="nav-search-input" oninput="navSearch(this.value)" onfocus="openModal('search-modal')">
+    <button class="nav-search-btn"><i class="fas fa-search"></i></button>
+  </div>
+  <div class="nav-actions">
+    <div class="nav-btn" onclick="openModal('cart-modal')" title="Cart">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="nav-badge" id="cart-badge">3</span>
+    </div>
+    <div class="nav-btn" onclick="navigate('dashboard')" title="Wishlist">
+      <i class="fas fa-heart"></i>
+      <span class="nav-badge" id="wish-badge">2</span>
+    </div>
+    <button class="nav-login-btn" onclick="openModal('login-modal')">
+      <i class="fas fa-user"></i> <span>Login</span>
+    </button>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" style="display:none;position:fixed;top:64px;left:0;right:0;background:var(--dark);border-bottom:1px solid rgba(212,175,55,0.15);padding:12px;z-index:998;flex-direction:column;gap:4px">
+  <div style="background:var(--dark3);border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:8px">
+    <i class="fas fa-search" style="color:var(--gray);font-size:0.85rem"></i>
+    <input type="text" placeholder="Search..." style="background:none;border:none;color:var(--white);font-family:var(--font-body);font-size:0.88rem;outline:none;flex:1">
+  </div>
+  <a onclick="navigate('home');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer;transition:var(--transition)"><i class="fas fa-home" style="width:18px;color:var(--gold)"></i>Home</a>
+  <a onclick="navigate('products');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer"><i class="fas fa-mobile-alt" style="width:18px;color:var(--gold)"></i>Products</a>
+  <a onclick="navigate('service');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer"><i class="fas fa-tools" style="width:18px;color:var(--gold)"></i>Sales & Service</a>
+  <a onclick="navigate('promises');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88sm;cursor:pointer"><i class="fas fa-shield-alt" style="width:18px;color:var(--gold)"></i>Service Promises</a>
+  <a onclick="navigate('about');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer"><i class="fas fa-info-circle" style="width:18px;color:var(--gold)"></i>About</a>
+  <a onclick="navigate('contact');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer"><i class="fas fa-phone" style="width:18px;color:var(--gold)"></i>Contact</a>
+  <a onclick="openModal('login-modal');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer"><i class="fas fa-user" style="width:18px;color:var(--gold)"></i>Login / Register</a>
+  <a onclick="navigate('admin');closeMenu()" style="display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--gray-light);border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer"><i class="fas fa-cog" style="width:18px;color:var(--gold)"></i>Admin Panel</a>
+</div>
+
+<!-- ════════════════ CATEGORY BAR ════════════════ -->
+<div class="cat-bar" id="cat-bar">
+  <div class="cat-item active" onclick="catNavigate(this,'home')" id="cat-home">
+    <div class="cat-icon-wrap">🏠</div>
+    <span class="cat-label">Home</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'cat-mobile')">
+    <div class="cat-icon-wrap">📱</div>
+    <span class="cat-label">Mobiles</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'cat-accessory')">
+    <div class="cat-icon-wrap">🎧</div>
+    <span class="cat-label">Accessories</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'cat-gadget')">
+    <div class="cat-icon-wrap">⌚</div>
+    <span class="cat-label">Gadgets</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'cat-tv')">
+    <div class="cat-icon-wrap">📺</div>
+    <span class="cat-label">TV</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'cat-fridge')">
+    <div class="cat-icon-wrap">❄️</div>
+    <span class="cat-label">Fridge</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'cat-ac')">
+    <div class="cat-icon-wrap">🌬️</div>
+    <span class="cat-label">AC & Cooler</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'flash')">
+    <div class="cat-icon-wrap">⚡</div>
+    <span class="cat-label">Flash Sale</span>
+  </div>
+  <div class="cat-item" onclick="catNavigate(this,'cat-prebook')">
+    <div class="cat-icon-wrap">🎯</div>
+    <span class="cat-label">Pre-Book</span>
+  </div>
+  <div class="cat-item" onclick="navigate('service')">
+    <div class="cat-icon-wrap">🔧</div>
+    <span class="cat-label">Service</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- GIVEAWAY BAR -->
+  <div class="giveaway-bar">
+    <span class="gb-fire">🔥</span>
+    <div class="gb-text"><strong>LIVE GIVEAWAY:</strong> Shop at Ajivex → Enter Lucky Draw!</div>
+    <div class="gb-counter">
+      <span class="gb-count" id="gb-count">6,547</span>
+      <div style="font-size:0.72rem;color:var(--gray)">/</div>
+      <span style="font-size:0.78rem;font-weight:700;color:var(--white)">10,000</span>
+    </div>
+    <div class="gb-progress-wrap">
+      <div class="gb-progress-fill" id="gb-fill" style="width:65.47%"></div>
+    </div>
+    <span class="gb-goal">Win ₹1 Lakh!</span>
+    <div class="gb-prize">🏆 ₹1,00,000 Prize</div>
+    <span class="gb-tc" onclick="openModal('giveaway-modal')">T&C</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">✨ Karur's #1 Premium Mobile Shop</div>
+        <h1 class="hero-title">
+          Find Your
+          <span class="gold block">Perfect Mobile</span>
+        </h1>
+        <p class="hero-sub">Take our Customer Challenge and discover the phone that perfectly matches your lifestyle, budget, and needs. Surprise delivery within 20KM of Karur!</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('challenge-sec').scrollIntoView({behavior:'smooth'})">
+            <i class="fas fa-bolt"></i> Take the Challenge
+          </button>
+          <button class="btn btn-outline btn-lg" onclick="navigate('products')">
+            <i class="fas fa-th"></i> Browse All
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hs-item"><span class="hs-num">500+</span><span class="hs-label">Products</span></div>
+          <div class="hs-item"><span class="hs-num">15+</span><span class="hs-label">Brands</span></div>
+          <div class="hs-item"><span class="hs-num">5000+</span><span class="hs-label">Customers</span></div>
+          <div class="hs-item"><span class="hs-num">20KM</span><span class="hs-label">Delivery</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div style="position:relative">
+          <div class="phone-rings">
+            <div class="phone-ring ring1"></div>
+            <div class="phone-ring ring2"></div>
+            <div class="phone-ring ring3"></div>
+          </div>
+          <div class="phone-3d">
+            <div class="phone-screen-content">
+              <div class="icon">📱</div>
+              <h3>Your Perfect Phone</h3>
+              <p>Awaits at Ajivex</p>
+            </div>
+          </div>
+          <div class="float-chip chip1">
+            <span class="chip-icon">🚀</span>
+            <div><div class="chip-label">Surprise Delivery</div><div class="chip-val">20KM Free</div></div>
+          </div>
+          <div class="float-chip chip2">
+            <span class="chip-icon">⚡</span>
+            <div><div class="chip-label">Flash Sale</div><div class="chip-val">40% OFF</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI ASSISTANT -->
+  <div class="ai-section">
+    <div class="container">
+      <div class="ai-card">
+        <div class="ai-header">
+          <div class="ai-icon">🤖</div>
+          <div>
+            <div class="ai-title">AI Phone Advisor</div>
+            <div class="ai-sub">Tell me your needs → I'll find your top 3 perfect phones</div>
+          </div>
+        </div>
+        <div class="ai-input-row">
+          <input class="ai-input" id="ai-query" placeholder="e.g. Best camera phone under ₹30,000 with good battery...">
+          <button class="btn btn-primary" onclick="runAI()"><i class="fas fa-magic"></i> Analyse</button>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+          <span onclick="setAI('Best camera phone under ₹20,000')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">📸 Best Camera</span>
+          <span onclick="setAI('Gaming phone under ₹30,000 with best processor')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">🎮 Gaming</span>
+          <span onclick="setAI('Best battery life phone under ₹15,000')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">🔋 Long Battery</span>
+          <span onclick="setAI('Best value phone under ₹10,000')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">💰 Budget</span>
+        </div>
+        <div class="ai-results" id="ai-results">
+          <div class="ai-loading" id="ai-loading" style="display:none"><i class="fas fa-spinner fa-spin"></i> Analysing best options for you...</div>
+        </div>
+        <p style="font-size:0.72rem;color:var(--gray);margin-top:8px;text-align:center"><i class="fas fa-info-circle" style="margin-right:4px"></i>Connect your AI API in Admin → AI Config for live recommendations</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLASH SALE -->
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <div class="flash-wrap" id="flash-sec">
+        <div class="flash-header">
+          <div class="flash-title"><i class="fas fa-bolt"></i> Flash Sale — Today Only!</div>
+          <div class="countdown">
+            <div class="cd-box"><span class="cd-num" id="fh">08</span><span class="cd-lbl">Hrs</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-box"><span class="cd-num" id="fm">34</span><span class="cd-lbl">Min</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-box"><span class="cd-num" id="fs">22</span><span class="cd-lbl">Sec</span></div>
+          </div>
+        </div>
+        <div class="carousel-wrap">
+          <button class="carousel-btn prev" onclick="scrollCarousel('flash-track',-1)"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track" id="flash-track"></div>
+          </div>
+          <button class="carousel-btn next" onclick="scrollCarousel('flash-track',1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURPRISE DELIVERY -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="surprise-banner">
+        <div>
+          <div class="sb-tag"><i class="fas fa-map-marker-alt"></i> Within 20KM of Karur</div>
+          <div class="sb-title">🎁 Surprise Delivery Experience</div>
+          <p class="sb-desc">Make someone's special day unforgettable. We deliver the perfect mobile as a gift and capture the magical moment on video — exclusively within 20KM of our Karur shop.</p>
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+            <span style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.25);color:var(--gold);font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:100px"><i class="fas fa-video" style="margin-right:4px"></i>Moment Captured</span>
+            <span style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.25);color:var(--gold);font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:100px"><i class="fab fa-instagram" style="margin-right:4px"></i>Follow to Unlock</span>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg" onclick="openModal('surprise-modal')">
+          <i class="fas fa-gift"></i> Book Surprise Delivery
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING PRODUCTS -->
+  <section class="section section-dark" style="padding-bottom:0">
+    <div class="container">
+      <div class="section-row">
+        <div>
+          <div class="section-label">Hot Right Now</div>
+          <h2 class="section-title">Trending <span>Mobiles</span></h2>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="navigate('products')">View All <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" onclick="scrollCarousel('trending-track',-1)"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track" id="trending-track"></div>
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel('trending-track',1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS -->
+  <section class="section section-dark" style="padding-top:40px;padding-bottom:0">
+    <div class="container">
+      <div class="section-row">
+        <div>
+          <div class="section-label">Most Purchased</div>
+          <h2 class="section-title">🏆 Ajivex <span>Bestsellers</span></h2>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" onclick="setBestTab('week',this)" style="background:var(--gold);color:var(--black)">This Week</button>
+          <button class="btn btn-ghost btn-sm" onclick="setBestTab('month',this)">This Month</button>
+        </div>
+      </div>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" onclick="scrollCarousel('best-track',-1)"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track" id="best-track"></div>
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel('best-track',1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING LAUNCHES -->
+  <section class="section section-dark" style="padding-top:40px">
+    <div class="container">
+      <div class="section-row">
+        <div>
+          <div class="section-label">Coming Soon</div>
+          <h2 class="section-title">🚀 Upcoming <span>Launches</span></h2>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="navigate('cat-prebook')">All Pre-Books <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" onclick="scrollCarousel('launch-track',-1)"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track" id="launch-track"></div>
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel('launch-track',1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER CHALLENGE -->
+  <section class="section" id="challenge-sec">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:0">
+        <div class="section-label">Customer Challenge</div>
+        <h2 class="section-title">What's Your Mobile <span>Priority?</span></h2>
+        <p class="section-sub" style="margin:10px auto 0">Select what matters most — get instant personalized recommendations!</p>
+      </div>
+      <div class="challenge-grid">
+        <div class="challenge-card" onclick="selectChallenge(this,'📸','Camera Lover','Samsung S24 Ultra, iPhone 15 Pro, Pixel 8 Pro')">
+          <div class="cc-emoji">📸</div>
+          <div class="cc-title">Best Camera</div>
+          <div class="cc-desc">Photography & videos are my priority</div>
+        </div>
+        <div class="challenge-card" onclick="selectChallenge(this,'🎮','Gaming Beast','ASUS ROG Phone 8, OnePlus 12, Realme GT 5 Pro')">
+          <div class="cc-emoji">🎮</div>
+          <div class="cc-title">Gaming Beast</div>
+          <div class="cc-desc">High FPS, fast processor, long battery</div>
+        </div>
+        <div class="challenge-card" onclick="selectChallenge(this,'💰','Budget Smart','Redmi Note 13 Pro+, Realme Narzo 70, Vivo Y200')">
+          <div class="cc-emoji">💰</div>
+          <div class="cc-title">Best Value</div>
+          <div class="cc-desc">Maximum features at lowest price</div>
+        </div>
+        <div class="challenge-card" onclick="selectChallenge(this,'🔋','Battery Champion','Samsung M55, Vivo Y100, Poco X6 Pro')">
+          <div class="cc-emoji">🔋</div>
+          <div class="cc-title">Long Battery</div>
+          <div class="cc-desc">Need phone that lasts all day</div>
+        </div>
+        <div class="challenge-card" onclick="selectChallenge(this,'💼','Business Pro','Samsung Galaxy Z Fold 5, iPhone 15 Pro Max')">
+          <div class="cc-emoji">💼</div>
+          <div class="cc-title">Business Style</div>
+          <div class="cc-desc">Professional look and multitasking</div>
+        </div>
+        <div class="challenge-card" onclick="selectChallenge(this,'👴','Easy to Use','Moto G64, Samsung M14, Vivo Y27')">
+          <div class="cc-emoji">👴</div>
+          <div class="cc-title">Simple & Easy</div>
+          <div class="cc-desc">Big display, easy interface for elders</div>
+        </div>
+      </div>
+      <div class="challenge-result" id="challenge-result">
+        <div class="cr-emoji" id="cr-emoji">📱</div>
+        <div class="cr-title" id="cr-title">Perfect match found!</div>
+        <p class="cr-desc" id="cr-desc">Best phones recommended for you</p>
+        <button class="btn btn-primary" onclick="navigate('products')"><i class="fas fa-shopping-bag"></i> Shop These Phones</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-label">Brand Deals</div>
+      <h2 class="section-title">Shop by <span>Brand</span></h2>
+      <div class="brands-grid">
+        <div class="brand-card" onclick="filterByBrand('apple')"><div class="brand-emoji">🍎</div><div class="brand-name">Apple</div><div class="brand-off">Up to 10% OFF</div></div>
+        <div class="brand-card" onclick="filterByBrand('samsung')"><div class="brand-emoji">📱</div><div class="brand-name">Samsung</div><div class="brand-off">Up to 18% OFF</div></div>
+        <div class="brand-card" onclick="filterByBrand('vivo')"><div class="brand-emoji">🔵</div><div class="brand-name">Vivo</div><div class="brand-off">Flat 15% OFF</div></div>
+        <div class="brand-card" onclick="filterByBrand('oneplus')"><div class="brand-emoji">🟢</div><div class="brand-name">OnePlus</div><div class="brand-off">Up to 12% OFF</div></div>
+        <div class="brand-card" onclick="filterByBrand('realme')"><div class="brand-emoji">🔴</div><div class="brand-name">Realme</div><div class="brand-off">Up to 20% OFF</div></div>
+        <div class="brand-card" onclick="filterByBrand('redmi')"><div class="brand-emoji">⭐</div><div class="brand-name">Redmi</div><div class="brand-off">Up to 25% OFF</div></div>
+        <div class="brand-card" onclick="filterByBrand('oppo')"><div class="brand-emoji">🟡</div><div class="brand-name">Oppo</div><div class="brand-off">Up to 15% OFF</div></div>
+        <div class="brand-card" onclick="filterByBrand('motorola')"><div class="brand-emoji">〽️</div><div class="brand-name">Motorola</div><div class="brand-off">Up to 22% OFF</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOYALTY TIERS -->
+  <section class="loyalty-section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:0">
+        <div class="section-label">Rewards Program</div>
+        <h2 class="section-title">Ajivex <span>Loyalty Tiers</span>
+          <i class="fas fa-info-circle" style="font-size:1rem;color:var(--gold);cursor:pointer;margin-left:8px;vertical-align:middle" onclick="openModal('loyalty-info-modal')" title="How it works"></i>
+        </h2>
+        <p class="section-sub" style="margin:10px auto 0">Every ₹1,000 you spend = 10 points. Credits valid 5 years. Use as partial payment!</p>
+      </div>
+      <div class="tiers-grid">
+        <div class="tier-card bronze">
+          <div class="tier-icon">🥉</div>
+          <div class="tier-name">Bronze</div>
+          <div class="tier-pts">0 – 499 points</div>
+          <div class="tier-perks">
+            <div class="tier-perk"><i class="fas fa-check"></i>Early flash sale access</div>
+            <div class="tier-perk"><i class="fas fa-check"></i>Points on every purchase</div>
+          </div>
+        </div>
+        <div class="tier-card silver">
+          <div class="tier-icon">🥈</div>
+          <div class="tier-name">Silver</div>
+          <div class="tier-pts">500 – 1,999 points</div>
+          <div class="tier-perks">
+            <div class="tier-perk"><i class="fas fa-check"></i>Free accessory gift</div>
+            <div class="tier-perk"><i class="fas fa-check"></i>Priority support</div>
+          </div>
+        </div>
+        <div class="tier-card gold">
+          <div class="tier-icon">🥇</div>
+          <div class="tier-name">Gold</div>
+          <div class="tier-pts">2,000 – 4,999 points</div>
+          <div class="tier-perks">
+            <div class="tier-perk"><i class="fas fa-check"></i>Free screen guard</div>
+            <div class="tier-perk"><i class="fas fa-check"></i>Exclusive Gold offers</div>
+          </div>
+        </div>
+        <div class="tier-card diamond">
+          <div class="tier-icon">💎</div>
+          <div class="tier-name">Diamond</div>
+          <div class="tier-pts">5,000+ points</div>
+          <div class="tier-perks">
+            <div class="tier-perk"><i class="fas fa-check"></i>₹5,000 credits usable</div>
+            <div class="tier-perk"><i class="fas fa-check"></i>VIP support + surprise gift</div>
+            <div class="tier-perk"><i class="fas fa-check"></i>Wall of Fame</div>
+          </div>
+        </div>
+        <div class="tier-card elite">
+          <div class="tier-icon">👑</div>
+          <div class="tier-name">Elite</div>
+          <div class="tier-pts">10,000+ points</div>
+          <div class="tier-perks">
+            <div class="tier-perk"><i class="fas fa-check"></i>Personal shopping assistant</div>
+            <div class="tier-perk"><i class="fas fa-check"></i>First pick on new launches</div>
+            <div class="tier-perk"><i class="fas fa-check"></i>Annual gift delivery</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is Surprise Delivery and how does it work?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Surprise Delivery is our unique gifting service where we deliver a mobile phone as a gift within 20KM of our Karur shop. Our team captures the magical moment on video! To unlock: follow us on Instagram & Facebook and upload a screenshot as proof. Then fill the booking form with recipient details, occasion, and preferred time.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do Loyalty Points work?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Every ₹1,000 you spend earns 10 points (1 point = ₹1 credit). Points are valid for 5 years. You can use credits as partial payment — max 10% of order value per transaction. Reaching 5,000 points unlocks Diamond tier with ₹5,000 credits!</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are all products genuine with warranty?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Yes! 100% genuine products with manufacturer warranty. We are authorized dealers for all major brands. Every purchase comes with official bill and warranty card. Service support available at our Karur shop.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does the Referral program work?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Share your unique referral code with friends. When they make their first purchase of ₹10,000 or more, both of you get 100 loyalty points! Works both online and offline. Offline: just ask your friend to mention your mobile number at our shop during billing.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Online: UPI (GPay, PhonePe, Paytm), Debit/Credit Cards, Net Banking, EMI, Digital Wallets, Buy Now Pay Later. Offline at shop: All above + Cash on Delivery. No Cost EMI available on select products.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How to enter the ₹1 Lakh Giveaway?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Any purchase of ₹5,000 or more automatically enters you into our lucky draw! You'll receive a unique Giveaway ID via WhatsApp. When we reach 10,000 customers, 2 lucky winners get ₹50,000 each. Both online and offline purchases are eligible.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer repair services in Karur?<i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Yes! We offer mobile and laptop repair services including screen replacement, battery replacement, software issues, water damage recovery, and more. Use our Sales & Service section to book — we'll send you a quotation via WhatsApp within 24 hours.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOGS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-row">
+        <div>
+          <div class="section-label">Tech Tips & News</div>
+          <h2 class="section-title">Latest <span>Blog Posts</span></h2>
+        </div>
+        <button class="btn btn-outline btn-sm">View All Posts <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card"><div class="blog-img">📱</div><div class="blog-body"><div class="blog-cat">Buying Guide</div><div class="blog-title">Best Mobiles Under ₹20,000 in 2025 — Karur's Top Picks</div><div class="blog-meta">March 15, 2025 · 5 min read</div></div></div>
+        <div class="blog-card"><div class="blog-img">📸</div><div class="blog-body"><div class="blog-cat">Comparison</div><div class="blog-title">iPhone 15 Pro vs Samsung S24 Ultra — Which is Worth It?</div><div class="blog-meta">March 10, 2025 · 8 min read</div></div></div>
+        <div class="blog-card"><div class="blog-img">🔋</div><div class="blog-body"><div class="blog-cat">Tips & Tricks</div><div class="blog-title">How to Make Your Phone Battery Last Longer — Expert Tips</div><div class="blog-meta">March 5, 2025 · 4 min read</div></div></div>
+        <div class="blog-card"><div class="blog-img">🚀</div><div class="blog-body"><div class="blog-cat">News</div><div class="blog-title">Top 5 Upcoming Phone Launches to Watch in 2025</div><div class="blog-meta">March 1, 2025 · 6 min read</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Ajivex Mobile</div>
+          <p class="footer-desc">Karur's premium multi-brand mobile shop. Best prices, genuine products, surprise delivery, and 10 service promises we never break.</p>
+          <div class="social-row">
+            <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919876543210" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Shop</div>
+          <div class="footer-links">
+            <a onclick="navigate('products')">All Products</a>
+            <a onclick="catNavigate(null,'cat-mobile')">Mobiles</a>
+            <a onclick="catNavigate(null,'cat-accessory')">Accessories</a>
+            <a onclick="catNavigate(null,'cat-tv')">Electronics</a>
+            <a onclick="catNavigate(null,'cat-prebook')">Pre-Booking</a>
+            <a onclick="catNavigate(null,'flash')">Flash Sales</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <div class="footer-links">
+            <a onclick="navigate('about')">About Us</a>
+            <a onclick="navigate('promises')">Service Promises</a>
+            <a onclick="navigate('service')">Repair Service</a>
+            <a onclick="navigate('contact')">Contact</a>
+            <a onclick="openModal('surprise-modal')">Surprise Delivery</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Support</div>
+          <div class="footer-links">
+            <a href="#" onclick="document.querySelector('.faq-wrap').scrollIntoView({behavior:'smooth'})">FAQ</a>
+            <a onclick="navigate('dashboard')">Track Order</a>
+            <a onclick="openModal('tc-modal')">Terms & Conditions</a>
+            <a onclick="openModal('warranty-modal')">Warranty Info</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 Ajivex Mobile Shop, Karur. All rights reserved.</div>
+        <div class="footer-copy">Made with ❤️ in Karur, Tamil Nadu</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════ PRODUCTS PAGE ════════════ -->
+<div class="page" id="page-products">
+  <div class="container">
+    <div style="padding:24px 0 0">
+      <h1 class="section-title">All <span>Products</span></h1>
+      <p style="color:var(--gray);font-size:0.88rem;margin-top:6px">Showing <span id="prod-count">24</span> products</p>
+    </div>
+    <div class="cat-page-layout">
+      <div class="filter-panel">
+        <div style="margin-bottom:18px">
+          <div class="fp-title">Search</div>
+          <div style="display:flex;background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-sm);overflow:hidden">
+            <input type="text" id="prod-search" placeholder="Search..." style="flex:1;background:none;border:none;color:var(--white);font-family:var(--font-body);font-size:0.82rem;padding:10px 12px;outline:none" oninput="filterProds()">
+            <button style="background:none;border:none;color:var(--gold);padding:0 10px;font-size:0.85rem"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+        <div class="fp-title">Category</div>
+        <div class="fp-opts" style="margin-bottom:18px">
+          <label class="fp-opt"><input type="checkbox" checked onchange="filterProds()">All Products</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Mobiles</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Accessories</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Gadgets</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Electronics</label>
+        </div>
+        <div class="fp-title">Brand</div>
+        <div class="fp-opts" style="margin-bottom:18px">
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Apple</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Samsung</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Vivo</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">OnePlus</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Realme</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">Redmi</label>
+        </div>
+        <div class="fp-title">Price Range</div>
+        <div style="margin-bottom:18px">
+          <input type="range" min="5000" max="200000" value="200000" style="width:100%;accent-color:var(--gold)" id="price-range" oninput="updatePrice(this.value)">
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--gray);margin-top:4px"><span>₹5,000</span><span id="price-label">₹2,00,000</span></div>
+        </div>
+        <div class="fp-title">Special</div>
+        <div class="fp-opts">
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">🔥 Flash Sale</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">🆕 New Arrivals</label>
+          <label class="fp-opt"><input type="checkbox" onchange="filterProds()">📦 In Stock</label>
+        </div>
+      </div>
+      <div>
+        <div class="products-header">
+          <div class="products-count" id="products-count">Showing all products</div>
+          <select class="sort-select" onchange="sortProds(this.value)">
+            <option value="default">Sort: Default</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Best Rated</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </div>
+        <div class="products-grid-main" id="products-grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ CATEGORY PAGES ════════════ -->
+<div class="page" id="page-cat-mobile">
+  <div class="container">
+    <div style="padding:24px 0 16px">
+      <h1 class="section-title">📱 <span>Mobiles</span></h1>
+    </div>
+    <div class="brand-filter-row" id="mobile-brand-filter">
+      <div class="brand-pill active" onclick="filterCatBrand(this,'all','mobile')">All Brands</div>
+      <div class="brand-pill" onclick="filterCatBrand(this,'apple','mobile')">🍎 Apple</div>
+      <div class="brand-pill" onclick="filterCatBrand(this,'samsung','mobile')">📱 Samsung</div>
+      <div class="brand-pill" onclick="filterCatBrand(this,'vivo','mobile')">🔵 Vivo</div>
+      <div class="brand-pill" onclick="filterCatBrand(this,'oneplus','mobile')">🟢 OnePlus</div>
+      <div class="brand-pill" onclick="filterCatBrand(this,'realme','mobile')">🔴 Realme</div>
+      <div class="brand-pill" onclick="filterCatBrand(this,'redmi','mobile')">⭐ Redmi</div>
+      <div class="brand-pill" onclick="filterCatBrand(this,'oppo','mobile')">🟡 Oppo</div>
+    </div>
+    <div style="margin-bottom:24px">
+      <div style="font-family:var(--font-head);font-size:0.85rem;font-weight:700;color:var(--gold);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px">🔥 Top Selling</div>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" onclick="scrollCarousel('mobile-top-track',-1)"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-track-wrap"><div class="carousel-track" id="mobile-top-track"></div></div>
+        <button class="carousel-btn next" onclick="scrollCarousel('mobile-top-track',1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--font-head);font-size:0.85rem;font-weight:700;color:var(--gold);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px">All Mobiles</div>
+      <div style="display:flex;background:var(--dark2);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius);overflow:hidden;max-width:400px;margin-bottom:16px">
+        <input type="text" placeholder="Search mobiles..." id="mobile-search" style="flex:1;background:none;border:none;color:var(--white);font-family:var(--font-body);font-size:0.88rem;padding:12px 16px;outline:none">
+        <button style="background:var(--gold);border:none;color:var(--black);padding:12px 16px;font-size:0.88rem"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="products-grid-main" id="mobile-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- OTHER CATEGORY PAGES (accessory, gadget, tv, fridge, ac, flash, prebook) -->
+<div class="page" id="page-cat-accessory">
+  <div class="container"><div style="padding:32px 0"><h1 class="section-title">🎧 Mobile <span>Accessories</span></h1></div>
+  <div class="products-grid-main" id="accessory-grid"></div></div>
+</div>
+<div class="page" id="page-cat-gadget">
+  <div class="container"><div style="padding:32px 0"><h1 class="section-title">⌚ <span>Gadgets</span></h1></div>
+  <div class="products-grid-main" id="gadget-grid"></div></div>
+</div>
+<div class="page" id="page-cat-tv">
+  <div class="container"><div style="padding:32px 0"><h1 class="section-title">📺 Smart <span>TV</span></h1></div>
+  <div class="products-grid-main" id="tv-grid"></div></div>
+</div>
+<div class="page" id="page-cat-fridge">
+  <div class="container"><div style="padding:32px 0"><h1 class="section-title">❄️ <span>Refrigerators</span></h1></div>
+  <div class="products-grid-main" id="fridge-grid"></div></div>
+</div>
+<div class="page" id="page-cat-ac">
+  <div class="container"><div style="padding:32px 0"><h1 class="section-title">🌬️ AC & <span>Air Coolers</span></h1></div>
+  <div class="products-grid-main" id="ac-grid"></div></div>
+</div>
+<div class="page" id="page-flash">
+  <div class="container">
+    <div style="padding:32px 0">
+      <h1 class="section-title">⚡ <span>Flash Sale</span></h1>
+      <div class="countdown" style="margin-top:12px">
+        <div class="cd-box"><span class="cd-num" id="fph">08</span><span class="cd-lbl">Hrs</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-box"><span class="cd-num" id="fpm">34</span><span class="cd-lbl">Min</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-box"><span class="cd-num" id="fps">22</span><span class="cd-lbl">Sec</span></div>
+      </div>
+    </div>
+    <div class="products-grid-main" id="flash-grid"></div>
+  </div>
+</div>
+<div class="page" id="page-cat-prebook">
+  <div class="container"><div style="padding:32px 0"><h1 class="section-title">🎯 Pre-Book <span>Upcoming Phones</span></h1></div>
+  <div class="carousel-track" id="prebook-grid" style="flex-wrap:wrap;gap:16px"></div></div>
+</div>
+
+<!-- ════════════ PRODUCT DETAIL ════════════ -->
+<div class="page" id="page-detail">
+  <div class="container">
+    <div style="padding:16px 0 0">
+      <button onclick="history.back()" style="background:none;border:none;color:var(--gold);cursor:pointer;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:8px">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+    </div>
+    <div class="detail-layout">
+      <div class="detail-imgs">
+        <div class="detail-main" id="d-main-img">📱</div>
+        <div class="detail-thumbs">
+          <div class="detail-thumb active">📱</div>
+          <div class="detail-thumb">🔋</div>
+          <div class="detail-thumb">📸</div>
+          <div class="detail-thumb">🌟</div>
+        </div>
+      </div>
+      <div>
+        <div class="detail-brand-tag" id="d-brand">Samsung</div>
+        <h1 class="detail-name" id="d-name">Galaxy S24 Ultra</h1>
+        <div class="detail-rating">
+          <span style="color:var(--gold);font-size:0.9rem">★★★★★</span>
+          <span style="font-family:var(--font-head);font-weight:800;color:var(--gold)" id="d-rating">4.8</span>
+          <span style="font-size:0.78rem;color:var(--gray)">(342 reviews)</span>
+          <span style="font-size:0.75rem;color:var(--green);margin-left:4px"><i class="fas fa-check-circle"></i> Verified Service Reviews</span>
+        </div>
+        <div class="detail-price-row">
+          <span class="detail-price" id="d-price">₹1,24,999</span>
+          <span class="detail-old" id="d-old">₹1,44,999</span>
+          <span class="detail-save">Save ₹20,000</span>
+        </div>
+        <div class="detail-emi" onclick="openModal('emi-modal')"><i class="fas fa-credit-card" style="margin-right:5px"></i>No Cost EMI from ₹10,416/month · View EMI Plans</div>
+
+        <!-- Flash timer -->
+        <div style="background:linear-gradient(135deg,#120000,#0a0a0a);border:1px solid rgba(230,57,70,0.2);border-radius:var(--radius);padding:14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div style="font-family:var(--font-head);font-size:0.88rem;font-weight:800;color:#FF4757"><i class="fas fa-bolt" style="margin-right:6px"></i>Flash Price Ends In</div>
+          <div class="countdown">
+            <div class="cd-box"><span class="cd-num" id="dh">02</span><span class="cd-lbl">Hrs</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-box"><span class="cd-num" id="dm">45</span><span class="cd-lbl">Min</span></div>
+            <span class="cd-sep">:</span>
+            <div class="cd-box"><span class="cd-num" id="ds">30</span><span class="cd-lbl">Sec</span></div>
+          </div>
+        </div>
+
+        <!-- Variants -->
+        <div class="variant-row">
+          <div class="variant-label">RAM + Storage</div>
+          <div class="variant-opts">
+            <div class="variant-opt" onclick="selectVariant(this)">8GB + 128GB</div>
+            <div class="variant-opt active" onclick="selectVariant(this)">12GB + 256GB</div>
+            <div class="variant-opt" onclick="selectVariant(this)">12GB + 512GB</div>
+          </div>
+        </div>
+
+        <!-- Specs -->
+        <div class="specs-grid">
+          <div class="spec-box"><div class="spec-lbl">RAM</div><div class="spec-val" id="d-ram">12GB</div></div>
+          <div class="spec-box"><div class="spec-lbl">Storage</div><div class="spec-val" id="d-storage">256GB</div></div>
+          <div class="spec-box"><div class="spec-lbl">Camera</div><div class="spec-val" id="d-cam">200MP</div></div>
+          <div class="spec-box"><div class="spec-lbl">Battery</div><div class="spec-val" id="d-bat">5000mAh</div></div>
+          <div class="spec-box"><div class="spec-lbl">Display</div><div class="spec-val">6.8" AMOLED</div></div>
+          <div class="spec-box"><div class="spec-lbl">Processor</div><div class="spec-val">SD 8 Gen 3</div></div>
+        </div>
+
+        <!-- Delivery Info -->
+        <div class="delivery-info">
+          <div class="di-row"><i class="fas fa-truck"></i>Delivery in 1-2 days via India Post Speed Post</div>
+          <div class="di-row"><i class="fas fa-rupee-sign"></i>Delivery charge: <span class="free" style="margin-left:4px">₹80</span> (Free above ₹10,000)</div>
+          <div class="di-row"><i class="fas fa-shield-alt"></i>1 Year Manufacturer Warranty</div>
+          <div class="di-row"><i class="fas fa-ban"></i>No Return Policy · Exchange on manufacturing defect</div>
+        </div>
+
+        <!-- Coupon -->
+        <div class="coupon-row">
+          <input class="form-input" placeholder="Enter coupon code (e.g. AJIVEX10)" id="detail-coupon" style="flex:1">
+          <button class="coupon-apply" onclick="applyCoupon('detail-coupon')">Apply</button>
+        </div>
+
+        <!-- Surprise option -->
+        <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius);padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;margin-bottom:14px" onclick="openModal('surprise-modal')">
+          <input type="checkbox" style="accent-color:var(--gold);margin-top:3px;width:17px;height:17px;cursor:pointer">
+          <div style="font-size:0.82rem;color:var(--gray-light)">
+            <strong style="color:var(--gold);display:block;margin-bottom:3px">🎁 Add Surprise Delivery (within 20KM of Karur)</strong>
+            Make it a gift! We capture the magical moment on video. Follow our social pages to unlock.
+          </div>
+        </div>
+
+        <!-- Mystery gift -->
+        <div style="background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius);padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <span style="font-size:1.5rem">🎊</span>
+          <div style="font-size:0.8rem;color:var(--gray-light)"><strong style="color:var(--gold)">Mystery Gift Eligible!</strong> You may receive a surprise gift with this order.</div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="detail-btns">
+          <button class="btn btn-outline" style="flex:1" onclick="addToCart();toast('🛒','Added to Cart!','Item added successfully')"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          <button class="btn btn-primary" style="flex:1" onclick="toast('💳','Proceeding...','Redirecting to secure payment')"><i class="fas fa-bolt"></i> Buy Now</button>
+          <button class="btn btn-ghost btn-icon" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+        </div>
+
+        <!-- Compare button -->
+        <button class="btn btn-ghost btn-sm btn-full" onclick="addCompare()" style="margin-bottom:16px">
+          <i class="fas fa-balance-scale"></i> Add to Compare
+        </button>
+
+        <!-- Pre-book notice -->
+        <div style="background:rgba(74,158,255,0.06);border:1px solid rgba(74,158,255,0.18);border-radius:var(--radius);padding:14px;font-size:0.82rem;color:var(--gray-light)">
+          <strong style="color:var(--blue);display:block;margin-bottom:6px">📦 Pre-Booking Available</strong>
+          Only <strong style="color:white">8 slots</strong> remaining. Reserve with ₹999 token.
+          <button onclick="toast('🎯','Pre-Book Confirmed!','Your slot is reserved!')" style="background:var(--blue);color:white;border:none;padding:6px 14px;border-radius:6px;font-weight:700;font-size:0.75rem;cursor:pointer;margin-top:8px;display:block">Pre-Book Now →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div style="padding:32px 0">
+      <h2 class="section-title" style="margin-bottom:6px">Customer <span>Reviews</span></h2>
+      <p style="font-size:0.8rem;color:var(--gray);margin-bottom:24px"><i class="fas fa-info-circle" style="margin-right:4px;color:var(--gold)"></i>Reviews are based on overall Ajivex service experience</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius);padding:18px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+            <div><div style="font-weight:700;color:var(--white)">Arjun K.</div><div style="color:var(--gold);font-size:0.82rem">★★★★★ 5.0</div></div>
+            <div style="font-size:0.72rem;color:var(--gray)">March 12, 2025</div>
+          </div>
+          <p style="font-size:0.84rem;color:var(--gray-light);line-height:1.6">Amazing phone and excellent service! Ajivex staff explained everything patiently. Got a mystery gift — a phone case! Delivered within 20KM same day. Highly recommended for Karur folks!</p>
+        </div>
+        <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius);padding:18px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+            <div><div style="font-weight:700;color:var(--white)">Priya M.</div><div style="color:var(--gold);font-size:0.82rem">★★★★★ 5.0</div></div>
+            <div style="font-size:0.72rem;color:var(--gray)">Feb 28, 2025</div>
+          </div>
+          <p style="font-size:0.84rem;color:var(--gray-light);line-height:1.6">Ordered surprise delivery for husband's birthday. The team was so professional and captured the moment beautifully! On time, well packed. Best gifting experience ever!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ SERVICE PAGE ════════════ -->
+<div class="page" id="page-service">
+  <div class="container">
+    <div style="padding:32px 0 0;text-align:center">
+      <div class="section-label">Repair & Support</div>
+      <h1 class="section-title">Sales & <span>Service</span></h1>
+      <p style="color:var(--gray);font-size:0.9rem;margin-top:8px;max-width:480px;margin-left:auto;margin-right:auto">Book your repair service in minutes. We'll send you a quotation via WhatsApp within 24 hours.</p>
+    </div>
+    <div class="wizard-wrap">
+      <!-- Progress -->
+      <div class="wizard-steps" id="wizard-steps">
+        <div class="ws-item"><div class="ws-circle active" id="wc1">1</div><div class="ws-line" id="wl1"></div></div>
+        <div class="ws-item"><div class="ws-circle" id="wc2">2</div><div class="ws-line" id="wl2"></div></div>
+        <div class="ws-item"><div class="ws-circle" id="wc3">3</div><div class="ws-line" id="wl3"></div></div>
+        <div class="ws-item"><div class="ws-circle" id="wc4">4</div><div class="ws-line" id="wl4"></div></div>
+        <div class="ws-item"><div class="ws-circle" id="wc5">5</div></div>
+      </div>
+
+      <!-- Step 1: Details -->
+      <div class="wizard-step active" id="ws1">
+        <div class="ws-title">Your Details</div>
+        <div class="ws-sub">We'll contact you with the repair quotation</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="sv-name" placeholder="Your full name"></div>
+          <div class="form-group"><label class="form-label">WhatsApp Number *</label><input class="form-input" id="sv-wa" placeholder="+91 98765 43210" type="tel"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Mobile Number</label><input class="form-input" id="sv-phone" placeholder="+91 98765 43210" type="tel"></div>
+          <div class="form-group"><label class="form-label">Email ID</label><input class="form-input" id="sv-email" placeholder="you@email.com" type="email"></div>
+        </div>
+        <div class="wizard-nav"><div></div><button class="btn btn-primary" onclick="wizNext(1)">Next <i class="fas fa-arrow-right"></i></button></div>
+      </div>
+
+      <!-- Step 2: Device Type -->
+      <div class="wizard-step" id="ws2">
+        <div class="ws-title">Device Type</div>
+        <div class="ws-sub">What device needs service?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:360px">
+          <div onclick="selectDevice(this,'mobile')" style="background:var(--dark3);border:2px solid rgba(255,255,255,0.07);border-radius:var(--radius-lg);padding:28px;text-align:center;cursor:pointer;transition:var(--transition)">
+            <div style="font-size:2.5rem;margin-bottom:10px">📱</div>
+            <div style="font-family:var(--font-head);font-weight:700;color:var(--white)">Mobile</div>
+          </div>
+          <div onclick="selectDevice(this,'laptop')" style="background:var(--dark3);border:2px solid rgba(255,255,255,0.07);border-radius:var(--radius-lg);padding:28px;text-align:center;cursor:pointer;transition:var(--transition)">
+            <div style="font-size:2.5rem;margin-bottom:10px">💻</div>
+            <div style="font-family:var(--font-head);font-weight:700;color:var(--white)">Laptop</div>
+          </div>
+        </div>
+        <div class="wizard-nav"><button class="btn btn-ghost" onclick="wizBack(2)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn btn-primary" onclick="wizNext(2)" id="ws2-next" disabled>Next <i class="fas fa-arrow-right"></i></button></div>
+      </div>
+
+      <!-- Step 3: Brand -->
+      <div class="wizard-step" id="ws3">
+        <div class="ws-title">Select Brand</div>
+        <div class="ws-sub">Which brand is your device?</div>
+        <div class="brand-grid" id="brand-grid">
+          <div class="brand-opt" onclick="selectBrand(this,'Samsung')"><div class="brand-opt-icon">📱</div><div class="brand-opt-name">Samsung</div></div>
+          <div class="brand-opt" onclick="selectBrand(this,'Apple')"><div class="brand-opt-icon">🍎</div><div class="brand-opt-name">Apple</div></div>
+          <div class="brand-opt" onclick="selectBrand(this,'Vivo')"><div class="brand-opt-icon">🔵</div><div class="brand-opt-name">Vivo</div></div>
+          <div class="brand-opt" onclick="selectBrand(this,'OnePlus')"><div class="brand-opt-icon">🟢</div><div class="brand-opt-name">OnePlus</div></div>
+          <div class="brand-opt" onclick="selectBrand(this,'Realme')"><div class="brand-opt-icon">🔴</div><div class="brand-opt-name">Realme</div></div>
+          <div class="brand-opt" onclick="selectBrand(this,'Redmi')"><div class="brand-opt-icon">⭐</div><div class="brand-opt-name">Redmi</div></div>
+          <div class="brand-opt" onclick="selectBrand(this,'Oppo')"><div class="brand-opt-icon">🟡</div><div class="brand-opt-name">Oppo</div></div>
+          <div class="brand-opt" onclick="selectBrand(this,'Other')"><div class="brand-opt-icon">📲</div><div class="brand-opt-name">Other</div></div>
+        </div>
+        <div class="form-group" style="margin-top:16px"><label class="form-label">Model Name</label><input class="form-input" id="sv-model" placeholder="e.g. Galaxy S24, iPhone 15, etc."></div>
+        <div class="wizard-nav"><button class="btn btn-ghost" onclick="wizBack(3)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn btn-primary" onclick="wizNext(3)">Next <i class="fas fa-arrow-right"></i></button></div>
+      </div>
+
+      <!-- Step 4: Problem -->
+      <div class="wizard-step" id="ws4">
+        <div class="ws-title">What's the Problem?</div>
+        <div class="ws-sub">Select all that apply</div>
+        <div class="problem-grid" id="problem-grid">
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-mobile-alt"></i>Screen Damage</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-battery-half"></i>Battery Issue</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-camera"></i>Camera Problem</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-volume-up"></i>Speaker/Mic Issue</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-wifi"></i>Network Problem</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-tint"></i>Water Damage</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-plug"></i>Charging Issue</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-cog"></i>Software/Hanging</div>
+          <div class="problem-chip" onclick="toggleProblem(this)"><i class="fas fa-circle"></i>Button Not Working</div>
+        </div>
+        <div class="form-group" style="margin-top:14px"><label class="form-label">Other / More Details</label><textarea class="form-textarea" id="sv-other" placeholder="Describe any other issues..." style="min-height:80px"></textarea></div>
+        <div class="wizard-nav"><button class="btn btn-ghost" onclick="wizBack(4)"><i class="fas fa-arrow-left"></i> Back</button><button class="btn btn-primary" onclick="wizNext(4)">Next <i class="fas fa-arrow-right"></i></button></div>
+      </div>
+
+      <!-- Step 5: Confirm -->
+      <div class="wizard-step" id="ws5">
+        <div class="ws-title">✅ Request Submitted!</div>
+        <div class="ws-sub">Our team will review and send you a quotation</div>
+        <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px" id="sv-summary">
+          <div style="font-family:var(--font-head);font-weight:700;color:var(--gold);margin-bottom:12px">Service Request Summary</div>
+          <div id="sv-summary-content" style="font-size:0.85rem;color:var(--gray-light);line-height:1.8"></div>
+        </div>
+        <div style="background:var(--dark3);border-radius:var(--radius);padding:14px;display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--gray-light)">
+          <span style="font-size:1.3rem">📱</span>
+          <div>You'll receive a WhatsApp message within <strong style="color:var(--white)">24 hours</strong> with the repair quotation.</div>
+        </div>
+        <button class="btn btn-primary btn-full" style="margin-top:16px" onclick="navigate('home')"><i class="fas fa-home"></i> Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ PROMISES PAGE ════════════ -->
+<div class="page" id="page-promises">
+  <div class="container">
+    <section class="section">
+      <div style="text-align:center;margin-bottom:0">
+        <div class="section-label">Our Commitment</div>
+        <h1 class="section-title">10 Service <span>Promises</span></h1>
+        <p class="section-sub" style="margin:10px auto 0">At Ajivex, we don't just sell phones — we build relationships built on trust and quality.</p>
+      </div>
+      <div class="promises-grid">
+        <div class="promise-card"><span class="promise-num">#1</span><div class="promise-ico">✅</div><div class="promise-title">100% Genuine Products</div><div class="promise-desc">Every product is authentic with official manufacturer warranty. Zero counterfeit, zero compromise — guaranteed.</div></div>
+        <div class="promise-card"><span class="promise-num">#2</span><div class="promise-ico">💰</div><div class="promise-title">Best Price Guarantee</div><div class="promise-desc">Found cheaper elsewhere? Show us and we'll match the price. We guarantee the best deal in Karur.</div></div>
+        <div class="promise-card"><span class="promise-num">#3</span><div class="promise-ico">⚡</div><div class="promise-title">Same Day Local Delivery</div><div class="promise-desc">Order before 3PM within 20KM of Karur and receive your product the same day — every time.</div></div>
+        <div class="promise-card"><span class="promise-num">#4</span><div class="promise-ico">🔧</div><div class="promise-title">Free Post-Sale Support</div><div class="promise-desc">Bought from us? We help setup, data transfer, and answer questions for free — even after purchase.</div></div>
+        <div class="promise-card"><span class="promise-num">#5</span><div class="promise-ico">🔄</div><div class="promise-title">Exchange on Defects</div><div class="promise-desc">Manufacturing defect within 7 days? Hassle-free exchange. No long processes, no excuses.</div></div>
+        <div class="promise-card"><span class="promise-num">#6</span><div class="promise-ico">🛡️</div><div class="promise-title">Secure Payments</div><div class="promise-desc">All transactions encrypted and secure. We protect your financial data — always.</div></div>
+        <div class="promise-card"><span class="promise-num">#7</span><div class="promise-ico">🎁</div><div class="promise-title">Mystery Gift Program</div><div class="promise-desc">Random rewards for our customers. You may receive a surprise gift with your order!</div></div>
+        <div class="promise-card"><span class="promise-num">#8</span><div class="promise-ico">🌟</div><div class="promise-title">Lifetime Loyalty Rewards</div><div class="promise-desc">Every purchase earns points. Credits valid 5 years. Use them as real money on future purchases.</div></div>
+        <div class="promise-card"><span class="promise-num">#9</span><div class="promise-ico">📞</div><div class="promise-title">24/7 WhatsApp Support</div><div class="promise-desc">Question at midnight? Chat with our experts anytime via WhatsApp. Always here for you.</div></div>
+        <div class="promise-card"><span class="promise-num">#10</span><div class="promise-ico">❤️</div><div class="promise-title">Treat Customers Like Family</div><div class="promise-desc">Every customer is treated with respect, warmth, and honesty. That's the Ajivex culture — forever.</div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ════════════ ABOUT PAGE ════════════ -->
+<div class="page" id="page-about">
+  <div class="container">
+    <section class="section">
+      <div class="about-grid">
+        <div>
+          <div class="section-label">Our Story</div>
+          <h1 class="section-title">About <span>Ajivex Mobile</span></h1>
+          <p style="color:var(--gray-light);font-size:0.95rem;line-height:1.8;margin:16px 0">Ajivex Mobile Shop was founded with a single mission — make premium technology accessible to everyone in Karur with the best price, genuine products, and unmatched service.</p>
+          <p style="color:var(--gray);font-size:0.9rem;line-height:1.8;margin-bottom:24px">Started as a small mobile shop in Karur, we've grown into a trusted multi-brand retailer offering mobiles, accessories, gadgets, and electronics. Our Surprise Delivery experience has won hearts across the 20KM radius.</p>
+          <button class="btn btn-primary" onclick="navigate('contact')"><i class="fas fa-phone"></i> Contact Us</button>
+        </div>
+        <div>
+          <div class="about-stats-grid">
+            <div class="about-stat"><div class="as-num">5000+</div><div class="as-lbl">Happy Customers</div></div>
+            <div class="about-stat"><div class="as-num">500+</div><div class="as-lbl">Products</div></div>
+            <div class="about-stat"><div class="as-num">15+</div><div class="as-lbl">Brands</div></div>
+            <div class="about-stat"><div class="as-num">4.9★</div><div class="as-lbl">Google Rating</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ════════════ CONTACT PAGE ════════════ -->
+<div class="page" id="page-contact">
+  <div class="container">
+    <section class="section">
+      <div class="section-label">Get in Touch</div>
+      <h1 class="section-title">Contact <span>Us</span></h1>
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:32px;margin-top:32px" class="contact-layout">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius);padding:18px;display:flex;gap:14px;align-items:flex-start">
+            <div style="width:42px;height:42px;background:var(--gold-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0"><i class="fas fa-map-marker-alt"></i></div>
+            <div><div style="font-size:0.72rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Address</div><div style="font-weight:600;color:var(--white);font-size:0.88rem">Ajivex Mobile Shop, Karur, Tamil Nadu — 639001</div></div>
+          </div>
+          <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius);padding:18px;display:flex;gap:14px;align-items:flex-start">
+            <div style="width:42px;height:42px;background:var(--gold-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0"><i class="fas fa-phone"></i></div>
+            <div><div style="font-size:0.72rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Phone / WhatsApp</div><div style="font-weight:600;color:var(--white);font-size:0.88rem">+91 98765 43210</div></div>
+          </div>
+          <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius);padding:18px;display:flex;gap:14px;align-items:flex-start">
+            <div style="width:42px;height:42px;background:var(--gold-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0"><i class="fas fa-clock"></i></div>
+            <div><div style="font-size:0.72rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Hours</div><div style="font-weight:600;color:var(--white);font-size:0.88rem">Mon–Sat: 9AM–9PM<br>Sunday: 10AM–7PM</div></div>
+          </div>
+        </div>
+        <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-lg);padding:28px">
+          <div style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:20px">Send a Message</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Name</label><input class="form-input" placeholder="Your name"></div>
+            <div class="form-group"><label class="form-label">Phone</label><input class="form-input" placeholder="+91 98765 43210" type="tel"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" placeholder="you@email.com" type="email"></div>
+          <div class="form-group"><label class="form-label">Subject</label><select class="form-select"><option>General Enquiry</option><option>Product Question</option><option>Surprise Delivery</option><option>Repair Service</option><option>Order Support</option></select></div>
+          <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Your message..."></textarea></div>
+          <button class="btn btn-primary btn-full" onclick="toast('✉️','Message Sent!','We\'ll reply within 24 hours')"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ════════════ USER DASHBOARD ════════════ -->
+<div class="page" id="page-dashboard">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:220px 1fr;gap:24px;padding:32px 0" class="dash-layout">
+      <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-lg);padding:20px;height:fit-content;position:sticky;top:calc(var(--nav-h) + var(--cat-h) + 16px)">
+        <div style="text-align:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--black);margin:0 auto 10px">A</div>
+          <div style="font-family:var(--font-head);font-weight:700;color:var(--white)">Arjun Kumar</div>
+          <div style="font-size:0.75rem;color:var(--gold);margin-top:3px">💎 Diamond Member</div>
+          <div style="font-size:0.72rem;color:var(--gray);margin-top:2px">ID: AJX-ONL-00001</div>
+        </div>
+        <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius-sm);padding:14px;margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+            <span style="font-size:0.78rem;font-weight:700;color:var(--gold)">Loyalty Points</span>
+            <span style="font-family:var(--font-head);font-size:1rem;font-weight:800;color:var(--white)">4,850 pts</span>
+          </div>
+          <div style="background:var(--dark3);border-radius:100px;height:6px;overflow:hidden;margin-bottom:5px">
+            <div style="height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));width:97%;border-radius:100px"></div>
+          </div>
+          <div style="font-size:0.68rem;color:var(--gray)">150 more points to Diamond!</div>
+        </div>
+        <div onclick="setDashTab('orders',this)" style="display:flex;align-items:center;gap:9px;padding:10px 12px;color:var(--gold);background:var(--gold-dim);border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;margin-bottom:4px;transition:var(--transition)"><i class="fas fa-box" style="width:16px"></i>My Orders</div>
+        <div onclick="setDashTab('wishlist',this)" style="display:flex;align-items:center;gap:9px;padding:10px 12px;color:var(--gray-light);border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;margin-bottom:4px;transition:var(--transition)"><i class="fas fa-heart" style="width:16px"></i>Wishlist</div>
+        <div onclick="setDashTab('coupons',this)" style="display:flex;align-items:center;gap:9px;padding:10px 12px;color:var(--gray-light);border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;margin-bottom:4px;transition:var(--transition)"><i class="fas fa-tag" style="width:16px"></i>My Coupons</div>
+        <div onclick="setDashTab('referral',this)" style="display:flex;align-items:center;gap:9px;padding:10px 12px;color:var(--gray-light);border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;margin-bottom:4px;transition:var(--transition)"><i class="fas fa-share-alt" style="width:16px"></i>Referrals</div>
+        <div onclick="setDashTab('profile',this)" style="display:flex;align-items:center;gap:9px;padding:10px 12px;color:var(--gray-light);border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;margin-bottom:4px;transition:var(--transition)"><i class="fas fa-user" style="width:16px"></i>Profile</div>
+        <div onclick="toast('👋','Logged Out','See you again!')" style="display:flex;align-items:center;gap:9px;padding:10px 12px;color:var(--red);border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;margin-top:12px;transition:var(--transition)"><i class="fas fa-sign-out-alt" style="width:16px"></i>Logout</div>
+      </div>
+      <div>
+        <div id="dash-orders">
+          <h2 style="font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:20px">My Orders</h2>
+          <div class="admin-card">
+            <table class="admin-table">
+              <thead><tr><th>Order ID</th><th>Product</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>#AJX-2025-1042</td><td>Samsung Galaxy S24 Ultra</td><td>Mar 10, 2025</td><td style="color:var(--gold);font-weight:700">₹1,24,999</td><td><span class="status-pill s-delivered">Delivered</span></td></tr>
+                <tr><td>#AJX-2025-1038</td><td>JBL Tune 770NC</td><td>Feb 28, 2025</td><td style="color:var(--gold);font-weight:700">₹4,499</td><td><span class="status-pill s-delivered">Delivered</span></td></tr>
+                <tr><td>#AJX-2025-1051</td><td>iPhone 15 Pro (Pre-Book)</td><td>Mar 15, 2025</td><td style="color:var(--gold);font-weight:700">₹1,34,900</td><td><span class="status-pill s-processing">Processing</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="dash-wishlist" style="display:none">
+          <h2 style="font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:20px">My Wishlist</h2>
+          <div class="products-grid-main" id="wish-grid"></div>
+        </div>
+        <div id="dash-coupons" style="display:none">
+          <h2 style="font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:20px">My Coupons</h2>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="background:var(--dark2);border:1.5px dashed rgba(212,175,55,0.35);border-radius:var(--radius);padding:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+              <div><div style="font-family:var(--font-head);font-size:1rem;font-weight:800;color:var(--gold)">AJIVEX10</div><div style="font-size:0.78rem;color:var(--gray);margin-top:3px">10% off Samsung phones · Expires Apr 30, 2025</div></div>
+              <span class="status-pill s-delivered">Active</span>
+            </div>
+          </div>
+        </div>
+        <div id="dash-referral" style="display:none">
+          <h2 style="font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:20px">My Referrals</h2>
+          <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-lg);padding:24px;text-align:center;margin-bottom:20px">
+            <div style="font-size:0.8rem;color:var(--gray);margin-bottom:8px">Your Referral Code</div>
+            <div style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:var(--gold);letter-spacing:2px">AJX-ARJ001</div>
+            <div style="font-size:0.78rem;color:var(--gray-light);margin-top:8px">Share this code — both of you get 100 points when friend purchases ₹10,000+</div>
+            <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="toast('📋','Copied!','Referral code copied to clipboard')"><i class="fas fa-copy"></i> Copy Code</button>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-head"><div class="admin-card-title">Referral History</div></div>
+            <table class="admin-table">
+              <thead><tr><th>Friend</th><th>Purchase</th><th>Points Earned</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Karthik R.</td><td>₹24,999</td><td style="color:var(--green);font-weight:700">+100 pts</td><td><span class="status-pill s-delivered">Credited</span></td></tr>
+                <tr><td>Meena T.</td><td>₹12,999</td><td style="color:var(--green);font-weight:700">+100 pts</td><td><span class="status-pill s-delivered">Credited</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="dash-profile" style="display:none">
+          <h2 style="font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:20px">My Profile</h2>
+          <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-lg);padding:24px;max-width:480px">
+            <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" value="Arjun"></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" value="Kumar"></div></div>
+            <div class="form-group"><label class="form-label">WhatsApp / Phone</label><input class="form-input" value="+91 98765 43210" type="tel"></div>
+            <div class="form-group"><label class="form-label">Email</label><input class="form-input" value="arjun@email.com" type="email"></div>
+            <div class="form-group"><label class="form-label">Address</label><textarea class="form-textarea">123, Main Road, Karur – 639001</textarea></div>
+            <button class="btn btn-primary" onclick="toast('✅','Profile Updated!','Changes saved successfully')"><i class="fas fa-save"></i> Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ MODALS ════════ -->
+
+<!-- LOGIN -->
+<div class="modal-overlay" id="login-modal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('login-modal')"><i class="fas fa-times"></i></button>
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="width:52px;height:52px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 12px">👤</div>
+      <div class="modal-title">Welcome to Ajivex</div>
+      <div class="modal-sub">Login or create your account</div>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuth(this,'login')">Login</button>
+      <button class="auth-tab" onclick="switchAuth(this,'register')">Register</button>
+    </div>
+    <!-- Login -->
+    <div id="auth-login">
+      <div class="form-group">
+        <label class="form-label">WhatsApp / Mobile Number</label>
+        <div class="input-icon-wrap"><i class="input-icon fas fa-phone"></i><input class="form-input" id="login-wa" placeholder="+91 98765 43210" type="tel"></div>
+        <div class="form-error" id="login-wa-err">Please enter a valid 10-digit mobile number</div>
+      </div>
+      <div id="login-otp-wrap" style="display:none">
+        <div style="font-size:0.8rem;color:var(--gray);text-align:center;margin-bottom:10px">Enter 6-digit OTP sent to your WhatsApp</div>
+        <div class="otp-row">
+          <input class="otp-box" maxlength="1" oninput="nextOtp(this)">
+          <input class="otp-box" maxlength="1" oninput="nextOtp(this)">
+          <input class="otp-box" maxlength="1" oninput="nextOtp(this)">
+          <input class="otp-box" maxlength="1" oninput="nextOtp(this)">
+          <input class="otp-box" maxlength="1" oninput="nextOtp(this)">
+          <input class="otp-box" maxlength="1" oninput="nextOtp(this)">
+        </div>
+        <button class="btn btn-primary btn-full" onclick="verifyLogin()"><i class="fas fa-check"></i> Verify & Login</button>
+      </div>
+      <div id="login-send-btn">
+        <button class="btn btn-primary btn-full" onclick="sendLoginOtp()"><i class="fas fa-sms"></i> Send OTP via WhatsApp</button>
+      </div>
+    </div>
+    <!-- Register -->
+    <div id="auth-register" style="display:none">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">First Name *</label><input class="form-input" id="reg-fname" placeholder="Arjun"><div class="form-error" id="reg-fname-err">Min 2 characters required</div></div>
+        <div class="form-group"><label class="form-label">Last Name *</label><input class="form-input" id="reg-lname" placeholder="Kumar"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">WhatsApp Number *</label>
+        <div class="input-icon-wrap"><i class="input-icon fab fa-whatsapp" style="color:#25D366"></i><input class="form-input" id="reg-wa" placeholder="+91 98765 43210" type="tel"></div>
+        <div class="form-error" id="reg-wa-err">Enter valid 10-digit mobile number</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email ID *</label>
+        <div class="input-icon-wrap"><i class="input-icon fas fa-envelope"></i><input class="form-input" id="reg-email" placeholder="you@email.com" type="email"></div>
+        <div class="form-error" id="reg-email-err">Enter a valid email address</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Referral Code <span style="color:var(--gray);font-weight:400">(optional)</span></label>
+        <input class="form-input" id="reg-ref" placeholder="e.g. AJX-ARJ001">
+      </div>
+      <div class="tc-row">
+        <input type="checkbox" id="tc-check">
+        <div class="tc-text">I agree to the <a onclick="openModal('tc-modal')">Terms & Conditions</a>, <a href="#">Privacy Policy</a>, and consent to receive WhatsApp notifications from Ajivex Mobile Shop.</div>
+      </div>
+      <div class="form-error" id="tc-err" style="margin-bottom:10px">Please accept Terms & Conditions</div>
+      <button class="btn btn-primary btn-full" onclick="registerUser()"><i class="fas fa-user-plus"></i> Create Account & Get OTP</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="modal-overlay" id="admin-login-modal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('admin-login-modal')"><i class="fas fa-times"></i></button>
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="width:60px;height:60px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 14px">🔐</div>
+      <div class="modal-title">Admin Login</div>
+      <div class="modal-sub">Restricted — Authorized Personnel Only</div>
+    </div>
+    <div id="admin-err" style="display:none;background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.25);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:16px;font-size:0.82rem;color:var(--red);display:flex;align-items:center;gap:8px">
+      <i class="fas fa-exclamation-circle"></i> Incorrect username or password
+    </div>
+    <div class="form-group"><label class="form-label">Username</label><div class="input-icon-wrap"><i class="input-icon fas fa-user"></i><input class="form-input" id="admin-user" placeholder="Admin username" autocomplete="username"></div></div>
+    <div class="form-group"><label class="form-label">Password</label>
+      <div style="position:relative">
+        <input type="password" class="form-input" id="admin-pass" placeholder="Admin password" style="padding-left:40px;padding-right:44px" autocomplete="current-password">
+        <i class="fas fa-lock" style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:0.85rem"></i>
+        <button onclick="togglePass()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--gray);cursor:pointer"><i class="fas fa-eye" id="pass-eye"></i></button>
+      </div>
+    </div>
+    <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius-sm);padding:12px;margin-bottom:20px;font-size:0.78rem;color:var(--gray-light)">
+      <strong style="color:var(--gold);display:block;margin-bottom:4px"><i class="fas fa-info-circle" style="margin-right:5px"></i>Demo Credentials</strong>
+      Username: <code style="background:var(--dark3);padding:1px 6px;border-radius:4px;color:var(--white)">ajivex_admin</code>&nbsp;&nbsp;
+      Password: <code style="background:var(--dark3);padding:1px 6px;border-radius:4px;color:var(--white)">Admin@2025</code>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="adminLogin()"><i class="fas fa-sign-in-alt"></i> Login to Admin Panel</button>
+  </div>
+</div>
+
+<!-- CART -->
+<div class="modal-overlay" id="cart-modal">
+  <div class="modal modal-lg">
+    <button class="modal-x" onclick="closeModal('cart-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">Your Cart 🛒</div>
+    <div class="modal-sub">3 items</div>
+    <div class="cart-list">
+      <div class="cart-item"><div class="ci-img">📱</div><div class="ci-info"><div class="ci-name">Samsung Galaxy S24 Ultra</div><div class="ci-price">₹1,24,999</div></div><div class="qty-ctrl"><button class="qty-btn">−</button><span class="qty-n">1</span><button class="qty-btn">+</button></div></div>
+      <div class="cart-item"><div class="ci-img">🎧</div><div class="ci-info"><div class="ci-name">JBL Tune 770NC Earbuds</div><div class="ci-price">₹4,499</div></div><div class="qty-ctrl"><button class="qty-btn">−</button><span class="qty-n">1</span><button class="qty-btn">+</button></div></div>
+      <div class="cart-item"><div class="ci-img">🔌</div><div class="ci-info"><div class="ci-name">65W Fast Charger</div><div class="ci-price">₹1,299</div></div><div class="qty-ctrl"><button class="qty-btn">−</button><span class="qty-n">1</span><button class="qty-btn">+</button></div></div>
+    </div>
+    <div class="coupon-row">
+      <input class="form-input" placeholder="Coupon code (try: AJIVEX10)" id="cart-coupon">
+      <button class="coupon-apply" onclick="applyCoupon('cart-coupon')">Apply</button>
+    </div>
+    <div class="cart-summary">
+      <div class="cs-row"><span class="label">Subtotal</span><span>₹1,30,797</span></div>
+      <div class="cs-row"><span class="label">Delivery</span><span style="color:var(--green)">₹80</span></div>
+      <div class="cs-row"><span class="label">Discount</span><span style="color:var(--green)">−₹0</span></div>
+      <div class="cs-total"><span>Total</span><span>₹1,30,877</span></div>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="closeModal('cart-modal');toast('💳','Checkout','Secure payment page...')"><i class="fas fa-lock"></i> Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- SURPRISE DELIVERY -->
+<div class="modal-overlay" id="surprise-modal">
+  <div class="modal modal-lg">
+    <button class="modal-x" onclick="closeModal('surprise-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">🎁 Surprise Delivery</div>
+    <div class="modal-sub">Available within 20KM of Karur. Follow us on social media to unlock.</div>
+    <div style="background:var(--dark3);border:1px dashed rgba(212,175,55,0.3);border-radius:var(--radius);padding:16px;margin-bottom:16px">
+      <div style="font-size:0.8rem;font-weight:700;color:var(--gold);margin-bottom:10px">Step 1: Follow our pages & upload proof</div>
+      <div style="display:flex;gap:8px;margin-bottom:10px">
+        <button style="flex:1;padding:10px;border-radius:8px;border:none;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-weight:700;font-size:0.8rem;cursor:pointer"><i class="fab fa-instagram" style="margin-right:5px"></i>Instagram</button>
+        <button style="flex:1;padding:10px;border-radius:8px;border:none;background:#1877F2;color:white;font-weight:700;font-size:0.8rem;cursor:pointer"><i class="fab fa-facebook-f" style="margin-right:5px"></i>Facebook</button>
+      </div>
+      <div style="background:var(--dark2);border:2px dashed rgba(212,175,55,0.2);border-radius:10px;padding:18px;text-align:center;cursor:pointer;font-size:0.82rem;color:var(--gray)" onclick="toast('📸','Upload Ready','Select your screenshot...')">
+        <i class="fas fa-cloud-upload-alt" style="font-size:1.6rem;color:var(--gold);display:block;margin-bottom:6px"></i>
+        Upload Screenshot Proof
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">Recipient Name *</label><input class="form-input" placeholder="Who's the lucky one?"></div>
+    <div class="form-group"><label class="form-label">Recipient Phone</label><input class="form-input" placeholder="+91 98765 43210" type="tel"></div>
+    <div class="form-group"><label class="form-label">Exact Delivery Address *</label><textarea class="form-textarea" placeholder="Full address within 20KM of Karur..." style="min-height:70px"></textarea></div>
+    <div class="form-group"><label class="form-label">Occasion</label><select class="form-select"><option>🎂 Birthday</option><option>💑 Anniversary</option><option>💝 Valentine's Day</option><option>🎓 Graduation</option><option>🎉 Other</option></select></div>
+    <div class="form-group"><label class="form-label">Custom Message</label><input class="form-input" placeholder="Your personal message to the recipient"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Preferred Date *</label><input class="form-input" type="date"></div>
+      <div class="form-group"><label class="form-label">Exact Time *</label><input class="form-input" type="time"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Special Instructions</label><textarea class="form-textarea" placeholder="Any special requests..." style="min-height:60px"></textarea></div>
+    <div style="background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.18);border-radius:var(--radius-sm);padding:10px 14px;font-size:0.78rem;color:var(--gray-light);margin-bottom:14px"><i class="fas fa-map-marker-alt" style="color:var(--red);margin-right:6px"></i>Delivery only within <strong style="color:white">20KM radius of Karur shop</strong>. Outside area requests will not be accepted.</div>
+    <button class="btn btn-primary btn-full" onclick="closeModal('surprise-modal');toast('🎁','Surprise Booked!','We\'ll confirm via WhatsApp shortly')"><i class="fas fa-gift"></i> Book Surprise Delivery</button>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="modal-overlay" id="search-modal">
+  <div class="modal modal-lg">
+    <button class="modal-x" onclick="closeModal('search-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">Search Products</div>
+    <div style="display:flex;background:var(--dark3);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);overflow:hidden;margin-bottom:16px">
+      <input type="text" class="form-input" style="border:none;border-radius:0" placeholder="Search mobiles, brands, accessories..." id="modal-search-input" oninput="modalSearch(this.value)" autofocus>
+      <button style="background:var(--gold);border:none;color:var(--black);padding:0 16px;font-size:0.9rem"><i class="fas fa-search"></i></button>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+      <span onclick="modalSearch('iPhone')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">iPhone 15</span>
+      <span onclick="modalSearch('Samsung')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">Samsung S24</span>
+      <span onclick="modalSearch('Vivo')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">Vivo V30</span>
+      <span onclick="modalSearch('earbuds')" style="background:var(--dark3);color:var(--gray-light);padding:5px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;border:1px solid rgba(255,255,255,0.06)">Earbuds</span>
+    </div>
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<!-- LOYALTY INFO -->
+<div class="modal-overlay" id="loyalty-info-modal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('loyalty-info-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">💎 Loyalty Points — How It Works</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px"><div style="font-weight:700;color:var(--gold);margin-bottom:5px">💰 Earning Points</div><div style="font-size:0.82rem;color:var(--gray-light);line-height:1.6">Every ₹1,000 you spend = 10 points. Points are credited after order delivery is confirmed.</div></div>
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px"><div style="font-weight:700;color:var(--gold);margin-bottom:5px">🎯 Redeeming Credits</div><div style="font-size:0.82rem;color:var(--gray-light);line-height:1.6">1 point = ₹1 credit. Use as partial payment — max 10% of any order value. Min 500 points to redeem.</div></div>
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px"><div style="font-weight:700;color:var(--gold);margin-bottom:5px">⏰ Validity</div><div style="font-size:0.82rem;color:var(--gray-light);line-height:1.6">Credits valid for 5 years from date of earning. WhatsApp alerts sent 1 year before expiry.</div></div>
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px"><div style="font-weight:700;color:var(--gold);margin-bottom:5px">🔒 Rules</div><div style="font-size:0.82rem;color:var(--gray-light);line-height:1.6">Non-transferable. Cannot combine with flash sale prices. Diamond redemption requires admin approval. Credits reset to 0 after Diamond redemption.</div></div>
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px"><div style="font-weight:700;color:var(--gold);margin-bottom:5px">🤝 Referral Bonus</div><div style="font-size:0.82rem;color:var(--gray-light);line-height:1.6">Refer a friend — both get 100 points when they make first purchase of ₹10,000+.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- GIVEAWAY T&C -->
+<div class="modal-overlay" id="giveaway-modal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('giveaway-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">🏆 Giveaway Terms & Conditions</div>
+    <div style="background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.2);border-radius:var(--radius-sm);padding:14px;margin:16px 0;font-size:0.82rem;color:var(--gray-light);line-height:1.7">
+      <p style="margin-bottom:8px;color:var(--white);font-weight:700">[Placeholder — Full T&C will be uploaded by admin]</p>
+      <p>• Minimum purchase of ₹5,000 required to enter</p>
+      <p>• Both online and offline purchases eligible</p>
+      <p>• Unique Giveaway ID issued via WhatsApp</p>
+      <p>• Winner selected via random draw at 10,000 entries</p>
+      <p>• 2 winners — ₹50,000 each</p>
+      <p>• Ajivex Mobile Shop decision is final</p>
+    </div>
+  </div>
+</div>
+
+<!-- WARRANTY -->
+<div class="modal-overlay" id="warranty-modal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('warranty-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">🛡️ Warranty Information</div>
+    <div style="background:rgba(255,200,0,0.05);border:1px solid rgba(255,200,0,0.15);border-radius:var(--radius-sm);padding:14px;margin-top:16px;font-size:0.82rem;color:var(--gray-light);line-height:1.7">
+      <p style="color:var(--white);font-weight:700;margin-bottom:8px">[Placeholder — Warranty details will be uploaded by admin]</p>
+    </div>
+  </div>
+</div>
+
+<!-- T&C -->
+<div class="modal-overlay" id="tc-modal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('tc-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">📋 Terms & Conditions</div>
+    <div style="background:rgba(255,200,0,0.05);border:1px solid rgba(255,200,0,0.15);border-radius:var(--radius-sm);padding:14px;margin-top:16px;font-size:0.82rem;color:var(--gray-light);line-height:1.7">
+      <p style="color:var(--white);font-weight:700;margin-bottom:8px">[Placeholder — Full T&C will be uploaded by admin]</p>
+      <p>• No return policy. Exchange only on manufacturing defects within 7 days.</p>
+      <p>• Loyalty credits valid 5 years. Non-transferable.</p>
+      <p>• Giveaway eligibility requires minimum ₹5,000 purchase.</p>
+      <p>• Surprise delivery available within 20KM of Karur only.</p>
+      <p>• All disputes subject to Karur jurisdiction.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EMI MODAL -->
+<div class="modal-overlay" id="emi-modal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('emi-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">💳 EMI Plans</div>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-weight:700;color:var(--white);font-size:0.88rem">3 Months — No Cost EMI</div><div style="font-size:0.75rem;color:var(--green)">HDFC / ICICI / SBI Cards</div></div>
+        <div style="font-family:var(--font-head);font-weight:800;color:var(--gold)">₹41,666/mo</div>
+      </div>
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-weight:700;color:var(--white);font-size:0.88rem">6 Months — No Cost EMI</div><div style="font-size:0.75rem;color:var(--green)">HDFC / ICICI / Axis Cards</div></div>
+        <div style="font-family:var(--font-head);font-weight:800;color:var(--gold)">₹20,833/mo</div>
+      </div>
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-weight:700;color:var(--white);font-size:0.88rem">12 Months EMI</div><div style="font-size:0.75rem;color:var(--gray)">All Cards (Interest applicable)</div></div>
+        <div style="font-family:var(--font-head);font-weight:800;color:var(--gold)">₹11,041/mo</div>
+      </div>
+      <div style="background:var(--dark3);border-radius:var(--radius-sm);padding:14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-weight:700;color:var(--white);font-size:0.88rem">Buy Now Pay Later</div><div style="font-size:0.75rem;color:var(--gray)">Simpl / ZestMoney</div></div>
+        <div style="font-family:var(--font-head);font-weight:800;color:var(--gold)">₹0 today</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compare-bar">
+  <div style="font-size:0.82rem;font-weight:700;color:var(--white)">Compare</div>
+  <div class="compare-items" id="compare-items">
+    <div class="compare-slot">+</div>
+    <div class="compare-slot">+</div>
+    <div class="compare-slot">+</div>
+  </div>
+  <button class="btn btn-primary btn-sm" onclick="toast('⚖️','Comparing!','Side-by-side comparison loading...')">Compare Now</button>
+  <button class="btn btn-ghost btn-sm" onclick="document.getElementById('compare-bar').classList.remove('show')">Clear</button>
+</div>
+
+<!-- PROOF TOAST -->
+<div class="proof-toast" id="proof-toast">
+  <span class="proof-icon">🛍️</span>
+  <div class="proof-text"><strong id="pt-name">Karthik from Karur</strong> <span id="pt-msg">just bought Samsung Galaxy S24!</span></div>
+</div>
+
+<!-- MAIN TOAST -->
+<div class="toast" id="main-toast">
+  <span class="toast-icon" id="toast-icon">✅</span>
+  <div><span class="toast-title" id="toast-title">Success!</span><span class="toast-msg" id="toast-msg"></span></div>
+</div>
+
+<!-- WELCOME POPUP -->
+<div class="welcome-popup" id="welcome-popup">
+  <div class="wp-card">
+    <div class="wp-emoji">🎉</div>
+    <div class="wp-title">Welcome to Ajivex!</div>
+    <p class="wp-sub">Karur's premium mobile shop. Genuine products, best prices, and a giveaway with ₹1 Lakh prize!</p>
+    <div class="wp-offer">
+      <div class="wp-offer-text">🎁 Register & Get 50 Bonus Points!</div>
+      <div class="wp-offer-sub">Worth ₹50 on your first purchase</div>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="closeWelcome();openModal('login-modal')"><i class="fas fa-user-plus"></i> Create Free Account</button>
+    <button class="btn btn-ghost btn-sm" style="margin-top:10px;width:100%" onclick="closeWelcome()">Maybe Later</button>
+  </div>
+</div>
+
+<!-- WHATSAPP -->
+<a class="wa-btn" href="https://wa.me/919876543210?text=Hi%20Ajivex%20Mobile%20Shop%20Karur!" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="app.js"></script>
+</body>
+</html>
